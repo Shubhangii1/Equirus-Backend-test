@@ -1,0 +1,36 @@
+public class BinarySearchTreeIndexFinder {
+    
+    public static int findIndex(int[] inputArray, int numberToFind) {
+        return findIndexHelper(inputArray, numberToFind, 0, inputArray.length - 1);
+    }
+
+    private static int findIndexHelper(int[] inputArray, int numberToFind, int start, int end) {
+        
+        if (start > end) {
+            return -1;
+        }
+        int root = inputArray[start];
+        if (root == numberToFind) {
+            return start;
+        }
+
+        if (numberToFind < root) {
+            return findIndexHelper(inputArray, numberToFind, start + 1, end);
+        } else {
+            int rightSubtreeIndex = start + 1;
+            while (rightSubtreeIndex <= end && inputArray[rightSubtreeIndex] < root) {
+                rightSubtreeIndex++;
+            }
+
+            
+            return findIndexHelper(inputArray, numberToFind, rightSubtreeIndex, end);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] inputArray = {4, 1, 2, 3, 5, 6, 7};
+        int numberToFind = 6;
+        int result = findIndex(inputArray, numberToFind);
+        System.out.println("Index of " + numberToFind + " is: " + result);
+    }
+}
