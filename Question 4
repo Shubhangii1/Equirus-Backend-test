@@ -1,0 +1,23 @@
+//Q-4 Find the lexicographically[Dictionary order] largest string in such a way that a maximum of only two characters positions are changed Ex: getLexiLargest(“acfgh”) should return hcfga
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        String s = "acfgh";
+        String st = getLexiLargest(s);
+        System.out.println(st);
+    }
+    public static String getLexiLargest(String s){
+        int[] sa = s.tocharArray();
+        int n = s.length();
+        for(int i =0; i<n; i++){
+            if(sa[i]<sa[i+1]){
+                swap(sa[i], sa[i+1]);
+            }
+        }
+       return "c";
+    }
+    public static String swap(){
+        return "";
+    }
+}
